@@ -1,0 +1,397 @@
+
+<html>
+
+<head> <!-- Holds links to CSS, Fonts, Jquery, JS. Holds the Title and Icon at the top of your Browser as well -->
+
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="mars.css" /> <!-- Links to the CSS file -->
+<link href='http://fonts.googleapis.com/css?family=Lemon' rel='stylesheet' type='text/css'> <!-- Links to the font -->
+<title>Pizza Presser - A pizza clicking incremental game</title> <!-- Title at the top of your Browser -->
+<meta name="Description" content="Pizza Presser is a fun and addicting pizza clicking incremental game that you can play in your browser. You'll be in charge of the delivery of millions of pizzas."><!-- Description -->
+<meta name="Author" content="Joe Morrell | MOJO-WEBDESIGNS.COM | PIZZAPRESSER.COM"> <!-- Author -->
+<link rel="shortcut icon" href="../img/icon.ico"> <!-- Tab Icon -->
+<link rel="stylesheet" type="text/css" href="jquery-ui.css">
+<script type="text/javascript" src="jquery.js" charset="utf8"></script> <!-- Links to the JQ file -->
+<script src="jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( "#dialog" ).dialog();
+    $( "#tutorial" ).click(function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  });
+</script>
+
+<script>
+  $(function() {
+    $( "#dialog2" ).dialog({
+  autoOpen: false
+	});
+    $( "#updates" ).click(function() {
+      $( "#dialog2" ).dialog( "open" );
+    });
+  });
+</script>
+<script>
+  $(function() {
+    $( "#dialog3" ).dialog({
+  autoOpen: false
+	});
+    $( "#faq" ).click(function() {
+      $( "#dialog3" ).dialog( "open" );
+    });
+  });
+</script>
+<script>
+  $(function() {
+    $( "#dialog4" ).dialog({
+  autoOpen: false
+	});
+    $( "#donators" ).click(function() {
+      $( "#dialog4" ).dialog( "open" );
+    });
+  });
+</script>
+</head>
+
+<body onload=" loadGameMars(); loadMartianHunter(); loadMartian(); loadRover(); loadMine(); loadPark(); loadBrewery(); loadHotel(); loadEcosystem(); loadHarvester(); loadExcavator(); loadExtractor(); loadAtmosphere(); pizzaPerSecondMars(); updateColours();" scroll="no" style="overflow: hidden">	<!-- Loads the game from last save and removes the scroll bar because of the dodgy width -->
+
+	<div id="dialog" title="Tutorial">
+		<ol>
+			<li>Click the pizza</li>
+			<li>Sell your pizzas</li>
+			<li>Buy hunters to go and catch martians</li>
+			<li>Train your martians using martian trainers (left column, scroll down if you can't see it)</li>
+			<li>Use your resources to create pizza makers</li>
+			<li>Check out the upgrades</li>
+			<li>Discover the secrets</li>
+			<li>Become the Leader of the Martians</li>
+			<li>Continue being a fookin' legend!</li>
+		</ol>
+		<div class="liney"></div>
+		<p>Pizza Presser relies on adverts and donations to stay running. If you disabled adblock I would love you :)</p>
+	</div>
+
+	<div id="dialog3" title="FAQ">
+	 
+		<h4 class="faqtitle">What do I do?</h4>
+		<p>Read the tutorial!</p>
+
+		<h4 class="faqtitle">Can I buy upgrades more than once?</h4>
+		<p>Don't test me.</p>
+
+		<h4 class="faqtitle">I can't buy pizza fuel!!!</h4>
+		<p>Pizzas, not money!</p>
+
+		<h4 class="faqtitle">Why do you use ads?</h4>
+		<p>The ads you can see generate money to cover the hosting costs.</p>
+
+		<h4 class="faqtitle">It wont let me buy x, help?</h4>
+		<p>Remember to click sell all pizzas dummy.	</p>
+
+	</div>
+
+	<div id="top"> <!-- Navigation Bar -->
+
+		<!-- Navigation Links -->
+		<p class="toptext"><a href="http://pizzapresser.com" target="_blank"> Pizza Presser</a> | <a href="https://www.facebook.com/pages/Pizza-Presser/263208693852892" target="_blank"> Facebook </a> | <a href="https://twitter.com/pizzapresser" target="_blank"> Twitter</a> | <a href="http://www.reddit.com/r/Pizza_Presser/" target="_blank"> Reddit </a> | <a href="http://pizzapresser.tumblr.com/" target="_blank"> Tumblr</a>  | <a href="http://www.pinterest.com/PizzaPresser/" target="_blank"> Pin</a> | <a href="blog.html" target="_blank">Blog</a> | <span id="tutorial">Tutorial</span></p>
+
+		<!-- End of Navigation Links -->
+
+		<!-- PayPal Donate Button -->
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="63E9ACATAECSU">
+		<input class="toptextright" type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+		<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+		</form>
+
+		<!-- End of PayPal Donate Button -->
+
+	</div> <!-- End of Navigation Bar -->
+
+	<div class="scrollable" id="left">  <!-- Scroll Bar between Left and Middle -->
+
+	<h1 class="textmiddle">Basic Resources</h1>
+
+	<!-- Giant Pizza -->
+	<div id="floaty-text-wrapper" onClick="pizzaClickMars(1); CreateFloat();">
+		<span id="pizzapic" type="button"><img src="../img/newpizza.png" alt="Giant Martian Pizza - Pizza Delivery Game"></span>
+	</div>
+
+	<!-- Total Pizza -->
+	<p class="pizzapos">Pizza: <span id="pizzaMars">0</span></p>
+
+	<!-- Pizza Per Second -->
+	<p class="pizzapos">Per Second: <span id="secondMars">0</span></p><br>
+
+	<!-- Sell all pizzas -->
+	<span>
+	<button id="button1" type="fix" onClick="sellClickMars(1)"><span class="sellpos">Sell All Pizzas!</span></button>
+	</span>
+	<!-- Total Money -->
+	<p class="pizzapos">Money: $<span id="moneyMars">0</span><p>
+
+	&nbsp
+	
+	<div id="martiansection">
+		
+	<h1 class="textmiddle">Martians</h1>
+	
+	<center>
+	<h2>Hunters: <span id="martianHunter2">0</span> | 
+	Trainers: <span id="martianTrainer2">0</span></h2>
+	</center>
+
+	<!-- Pizza Per Second -->
+	<h2 style="text-align: center">Next Hunt: <span id="nextHunt">0</span></h2>
+	
+	<h2 style="text-align: center">Captured Martians: <span id="capturedMartian">0</span></h2>
+	
+	<center>
+	  
+	    <button id="button2" type="fix" onClick="getXP(0)"><span style="font-size:20px; text-align: center; padding-left: 28%;">Train a Martian!</span></button><br /><br>
+	    Your new martian has <span id="xpMars">0</span> xp<br />
+	    You need <span id="xpNeededMars">20</span> xp to fully train your new martian!
+	</center>
+		
+	<h2 style="text-align: center">Trained Martians: <span id="trainedMartian">0</span></h2>
+
+
+	<!-- Divider -->	
+	<div class="xpdivider"></div>
+
+	</div>	<!-- End of Martians -->
+	
+	
+
+	<div id="sloppy"></div> <!-- Fixes height issue / scroll issue -->
+	
+	
+
+</div> <!-- End of Left -->
+
+<div id="leftdivider"></div> <!-- Left Divider -->
+	
+<div class="scrollable" id="middle"> <!-- Scroll Bar Between Middle and Right-->	
+
+	<h1 class="textmiddle">Resources</h1>
+
+	<iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=48&l=ur1&category=game_downloads&banner=07YBAJRZ4ZYJNPDJS3G2&f=ifr&linkID=0354d6073f38532f42bcfce9c36f6ffb&t=pizza08b-20&tracking_id=pizza08b-20" width="728" height="90" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>	
+
+	<button id="mybox" type="fix" onClick="buyMartianHunter()"><span class="text">Buy a Martian Hunter! </span><span id="martianHunter" class="pullright">0</span><br>$<span id="martianHunterCost">20</span></button>
+	<div id="tooltip"><p>A martian hunter captures the wild martians that roam free on Mars. "Humanely"</p></div>
+	
+	<button id="mybox1" type="fix" onClick="buyMartianTrainer()"><span class="text">Buy a Martian Trainer! </span><span id="martianTrainer" class="pullright">0</span><br>$<span id="martianTrainerCost">30</span></button> 
+	<div id="tooltip1"><p>A martian trainer teaches the captured martians how to do useful tasks. Such as how to be your slave.</p></div>
+	<button id="smallbox10" type="smallButton" onClick="buyTenMartianTrainer()"><span class="textSmall">Buy 10!</span>
+	<button id="smallbox100" type="smallButtons" onClick="buyHundredMartianTrainer()"><span class="textSmall">Buy 100!</span>
+	<button id="smallbox1000" type="smallButtons" onClick="buyThousandMartianTrainer()"><span class="textSmall">Buy 1000!</span>
+	
+	<button id="mybox2" type="fix" onClick="buyTaskmaster()"><span class="text">Buy a Martian Taskmaster! </span><span id="taskmaster" class="pullright">0</span><br>$<span id="taskmasterCost">50</span></button> 
+	<div id="tooltip2"><p>A martian taskmaster keeps all the trained martians in check and works their fingers to the bone. Or the slime. Whatever they're made of.</p></div>
+	<button id="1smallbox10" type="smallButton" onClick="buyTenTaskmaster()"><span class="textSmall">Buy 10!</span>
+	<button id="1smallbox100" type="smallButtons" onClick="buyHundredTaskmaster()"><span class="textSmall">Buy 100!</span>
+	<button id="1smallbox1000" type="smallButtons" onClick="buyThousandTaskmaster()"><span class="textSmall">Buy 1000!</span>
+
+	<button id="mybox3" type="fix" onClick="buyOverseer()"><span class="text">Buy a Martian Overseer! </span><span id="overseer" class="pullright">0</span><br>$<span id="overseerCost">500</span></button>
+	<div id="tooltip3"><p>An overseer leads the taskmasters on the larger, more profitable projects. Please keep away from Martians.</p></div>
+	<button id="2smallbox10" type="smallButton" onClick="buyTenOverseer()"><span class="textSmall">Buy 10!</span>
+	<button id="2smallbox100" type="smallButtons" onClick="buyHundredOverseer()"><span class="textSmall">Buy 100!</span>
+	<button id="2smallbox1000" type="smallButtons" onClick="buyThousandOverseer()"><span class="textSmall">Buy 1000!</span>
+
+	<button id="mybox4" type="fix" onClick="buyTechnician()"><span class="text">Buy a Martian Technician! </span><span id="technician" class="pullright">0</span><br>$<span id="technicianCost">1,000</span></button>
+	<div id="tooltip4"><p>Technicians tan<span class="subtle">t</span>alisingly try to troubleshoot the tr<span class="subtle">i</span>cky <span class="subtle">t</span>echnicali<span class="subtle">ties</span> that take time to target.</p></div>
+	<button id="3smallbox10" type="smallButton" onClick="buyTenTechnician()"><span class="textSmall">Buy 10!</span>
+	<button id="3smallbox100" type="smallButtons" onClick="buyHundredTechnician()"><span class="textSmall">Buy 100!</span>
+	<button id="3smallbox1000" type="smallButtons" onClick="buyThousandTechnician()"><span class="textSmall">Buy 1000!</span>
+
+	<button id="mybox6" type="fix" onClick="buyRover()"><span class="text">Buy a Rover! </span><span id="rover" class="pullright">0</span><br>$<span id="roverCost">150</span></button>
+	<div id="tooltip6"><p>Use NASA's rover as a pizza delivery rover!</p></div>
+
+	<button id="mybox7" type="fix" onClick="buyMine()"><span class="text">Buy a Mine! </span><span id="mine" class="pullright">0</span><br>$<span id="mineCost">500</span></button> 
+	<div id="tooltip7"><p>Craft a mine to access those underground pizzas.</p></div>
+
+	<button id="mybox8" type="fix" onClick="buyPark()"><span class="text">Buy a Park! </span><span id="park" class="pullright">0</span><br>$<span id="parkCost">6,000</span></button>
+	<div id="tooltip8"><p>Just an honest looking park. Completely safe.</p></div>
+
+	<button id="mybox9" type="fix" onClick="buyBrewery()"><span class="text">Buy a Brewery! </span><span id="brewery" class="pullright">0</span><br>$<span id="breweryCost">30,000</span></button> 
+	<div id="tooltip9"><p>WARNING: May contain martian excrement.</p></div>
+
+	<button id="mybox10" type="fix" onClick="buyHotel()"><span class="text">Buy a Hotel! </span><span id="hotel" class="pullright">0</span><br>$<span id="hotelCost">200,000</span></button>
+	<div id="tooltip10"><p>Don't tip the martians.</p></div>
+
+	<button id="mybox11" type="fix" onClick="buyEcosystem()"><span class="text">Buy an Ecosystem! </span><span id="ecosystem" class="pullright">0</span><br>$<span id="ecosystemCost">700,000</span></button> 
+	<div id="tooltip11"><p>Everything is perfectly safe. There is no such thing as a man-eating pizza tree.</p></div>
+
+	<button id="mybox12" type="fix" onClick="buyHarvester()"><span class="text">Buy a Harvester! </span><span id="harvester" class="pullright">0</span><br>$<span id="harvesterCost">13,000,000</span></button> 
+	<div id="tooltip12"><p>So that's what happened to Noo Noo...</p></div>
+
+	<button id="mybox13" type="fix" onClick="buyExcavator()"><span class="text">Buy an Excavator! </span><span id="excavator" class="pullright">0</span><br>$<span id="excavatorCost">200,000,000</span></button> 
+	<div id="tooltip13"><p>Can clear out a volcano, but still can't lift yo momma.</p></div>
+
+	<button id="mybox14" type="fix" onClick="buyExtractor()"><span class="text">Buy an Extractor! </span><span id="extractor" class="pullright">0</span><br>$<span id="extractorCost">1,000,000,000</span></button></span>
+	<div id="tooltip14"><p>What do you get when your ex makes sweet love to a tractor?</p></div>
+
+	<button id="mybox16" type="fix" onClick="buyAtmosphere()"><span class="text">Buy an Atmosphere Machine! </span><span id="atmosphere" class="pullright">0</span><br>$<span id="atmosphereCost">50,000,000,000</span></button>
+	<div id="tooltip16"><p>It's like a pizza box and the planet is pizza. Woah.</p></div>
+
+	<button id="mybox17" type="fix" onClick="buyMartianMetal()"><span class="text">Buy Martian Metal! </span><span id="martianMetal" class="pullright">0</span><br>$<span id="martianMetalCost">10,000</span></button>
+	<div id="tooltip17"><p>The faint glow seems to attract the martians...</p></div>
+	<button id="4smallbox10" type="smallButton" onClick="buyTenMartianMetal()"><span class="textSmall">Buy 10!</span>
+	<button id="4smallbox100" type="smallButtons" onClick="buyHundredMartianMetal()"><span class="textSmall">Buy 100!</span>
+	<button id="4smallbox1000" type="smallButtons" onClick="buyThousandMartianMetal()"><span class="textSmall">Buy 1000!</span></button>
+
+	&nbsp
+
+	<h1 class="textmiddle">Upgrades</h1>
+
+	<button id="mybox35" type="fix" onClick="buyConvenience(); pizzaPerSecondMars()"><span class="text">Still?</span><span id="convenience" class="pullright">0</span><br>$<span id="convenienceCost">10,000</span></button>
+	<div id="tooltip35"><p>Yes I am still making you buy these buttons. Deal with it.<br><br>Unlock +10, +100, and +1000 Buttons for a few resources.</p></div>
+
+	<button id="mybox36" type="fix" onClick="buyConvenience2(); pizzaPerSecondMars()"><span class="text">Wasted Money</span><span id="convenience2" class="pullright">0</span><br>$<span id="convenience2Cost">1,000,000</span></button>
+	<div id="tooltip36"><p>More money? Oh, you shouldn't have! You're too kind.<br><br>Unlock +10, +100, and +1000 Buttons for a few resources.</p></div>
+
+	<button id="mybox37" type="fix" onClick="buyConvenience3(); pizzaPerSecondMars()"><span class="text">Still?</span><span id="convenience3" class="pullright">0</span><br>$<span id="convenience3Cost">50,000,000</span></button>
+	<div id="tooltip37"><p>You've donated $151,120,000 just for convenience. Think what that could buy.<br><br>Unlock +10, +100, and +1000 Buttons for a few resources.</p></div>
+
+	<button id="mybox33" type="fix" onClick="buyAutomaticTrainers(); pizzaPerSecondMars()"><span class="text">Automatic Trainer!</span><span id="automaticTrainers" class="pullright">0</span><br>$<span id="automaticTrainersCost">50,000</span></button>
+	<div id="tooltip33"><p>Awww, is your finger hurting? Baby.<br><br>Your Martian Trainers produce 1xp each every second.</p></div>
+
+	<button id="mybox34" type="fix" onClick="buyAutomaticTrainers2(); pizzaPerSecondMars()"><span class="text">Automatic Trainers!</span><span id="automaticTrainers2" class="pullright">0</span><br>$<span id="automaticTrainers2Cost">20,000,000</span></button>
+	<div id="tooltip34"><p>All of you are babies!<br><br>Your Martian Trainers produce 2xp each every 0.5 seconds.</p></div>
+
+	&nbsp
+	
+	<!-- Options -->
+	<h1 class="textmiddle">Options</h1>
+
+	<p><button type="options"onclick="saveGameMars()">Save</button> Save the game at this exact moment</p>
+    <p><button type="options"onclick="loadGameMars()">Load</button> Load the game to your latest save</p>
+    <p><button type="options"onclick="deleteGameMars()">Delete</button> Start from the total beginning</p>
+
+    <!-- End of Options -->
+
+    <!-- Statistics -->
+	<h1 class="textmiddle">Stats</h1>
+
+	<p class="stats">Martian Pizzas made: <span id="totalMartianPizza">0</span> </span></p>
+	<p class="stats">Martian Hunters put to Work: <span id="totalMartianHunter">0</span> </span></p>
+	<p class="stats">Martian Trainers put to Work: <span id="totalMartianTrainer">0</span></span></p>
+	<p class="stats">Taskmasters put to Work: <span id="totalTaskmaster">0</span></span></p>
+	<p class="stats">Overseer put to Work: <span id="totalOverseer">0</span></span></p>
+	<p class="stats">Technicians put to Work: <span id="totalTechnician">0</span></span></p>
+	<p class="stats">Rovers in Use: <span id="totalRover">0</span></span></p>
+	<p class="stats">Mines in Use: <span id="totalMine">0</span></span></p>
+	<p class="stats">Parks in Use: <span id="totalPark">0</span></span></p>
+	<p class="stats">Brewery in Use: <span id="totalBrewery">0</span></span></p>
+	<p class="stats">Hotel in Use: <span id="totalHotel">0</span></span></p>
+	<p class="stats">Ecosystems in Use: <span id="totalEcosystem">0</span></span></p>
+	<p class="stats">Harvesters in Use: <span id="totalHarvester">0</span></span></p>
+	<p class="stats">Excavators in Use: <span id="totalExcavator">0</span></span></p>
+	<p class="stats">Martian Metal Used: <span id="totalMartianMetal">0</span></span></p>
+	<p class="stats">Extractors in use: <span id="totalExtractor">0</span></p>
+	<p class="stats">Atmosphere Machines in Use: <span id="totalAtmosphere">0</span></p>
+
+	<!-- End of Statistics -->
+
+	<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=51fdabe6-8751-43b2-8465-8f18357dd313&storeId=pizza08b-20"></script>
+
+	<div id="sloppy"></div> <!-- Fixes height issue / scroll issue -->
+
+</div> <!-- End of Middle -->
+<div id="rightdivider"></div> <!-- Right Divider -->
+
+<div class="scrollable" id="right"> <!-- Right Scroll Bar -->
+
+	<h1 class="textmiddle"> Pizza Makers </h1> 
+
+	<!--Martians-->
+	<button id="mybox18" type="button" onClick="buyMartian(); pizzaPerSecondMars()"><span class="text">Hire a Martian! </span><span id="martian" class="pullright">0</span> <br>$<span id="martianCost"> 100 </span> + <span id="martianCostTrainedMartian"> 1 </span></button>
+	<div id="tooltip18"><p>I bet he had a nice family...<br><br> Cost = $<span id="martianCostTT">100</span>, 1 Trained Martian.<br><br>Pizzas Per Second = 2</p></div>
+
+	<!--Pizza Carts-->
+	<button id="mybox19" type="button" onClick="buyMarsRover(); pizzaPerSecondMars()"><span class="text">Hire a Mars Rover! </span><span id="marsRover" class="pullright">0</span><br>$<span id="marsRoverCost"> 300 </span> + <span id="marsRoverCostTrainedMartian"> 2 </span> + <span id="marsRoverCostRover"> 1 </span></button>
+	<div id="tooltip19"><p>Curiosity's secret mission. <br><br> Cost = $<span id="marsRoverCostTT">300</span>, 2 Trained Martians, 1 Rover.<br><br>Pizzas Per Second = 8</p></div>
+
+	<!--Pizza Vans-->
+	<button id="mybox20" type="button" onClick="buyMarsMine(); pizzaPerSecondMars()"><span class="text">Open a Pizza Mine! </span><span id="marsMine" class="pullright">0</span><br>$<span id="marsMineCost"> 800 </span> + <span id="marsMineCostTrainedMartian"> 5 </span> + <span id="marsMineCostTaskmaster"> 1 </span> + <span id="marsMineCostMine"> 1 </span></button> 
+	<div id="tooltip20"><p>Make your martians dig for pizza in the crust. Pun intended.<br><br> Cost = $<span id="marsMineCostTT">800</span>, 5 Trained Martians, 1 Taskmaster, 1 Mine.<br><br>Pizzas Per Second = 30</p></div>
+	
+	<!--Pizza Parlours-->
+	<button id="mybox21" type="button" onClick="buyMarsPark(); pizzaPerSecondMars()"><span class="text">Open a Pizza Park! </span><span id="marsPark" class="pullright">0</span><br>$<span id="marsParkCost"> 10,000 </span> + <span id="marsParkCostTrainedMartian"> 15 </span> + <span id="marsParkCostTaskmaster"> 3 </span> + <span id="marsParkCostPark"> 1 </span></button>
+	<div id="tooltip21"><p>A "park" where the local martians maintain the pizza plants "voluntarily".<br><br> Cost = $<span id="marsParkCostTT">10,000</span>, 15 Trained Martians, 3 Taskmasters, 1 Park.<br><br>Pizzas Per Second = 160</p></div>
+
+	<!--Pizza Restaurants-->
+	<button id="mybox22" type="button" onClick="buyMarsBrewery(); pizzaPerSecondMars()"><span class="text">Open a Pizza Brewery! </span><span id="marsBrewery" class="pullright">0</span><br>$<span id="marsBreweryCost"> 50,000 </span> + <span id="marsBreweryCostTrainedMartian"> 40 </span> + <span id="pizzaBreweryCostTaskmaster"> 8 </span> + <span id="marsBreweryCostBrewery"> 1 </span></button> 
+	<div id="tooltip22"><p>Even Martians can't resist pizza and beer... If we let them have any! AHAHAHAHAHAHAHA! <br><br> Cost = $<span id="marsBreweryCostTT">50,000</span>, 40 Trained Martians, 8 Taskmasters, 1 Brewery.<br><br>Pizzas Per Second = 800</p></div>
+
+	<!--Pizza Palaces-->
+	<button id="mybox23" type="button" onClick="buyMarsHotel(); pizzaPerSecondMars()"><span class="text">Open a Pizza Hotel! </span><span id="marsHotel" class="pullright">0</span><br>$<span id="marsHotelCost"> 300,000 </span> + <span id="marsHotelCostTrainedMartian"> 100 </span> + <span id="marsHotelCostTaskmaster"> 20 </span> + <span id="marsHotelCostHotel"> 1 </span></button> 
+	<div id="tooltip23"><p>We are not responsible for loss of items. Or mysterious green slime.<br><br> Cost = $<span id="marsHotelCostTT">300,000</span>, 100 Trained Martians, 20 Taskmasters, 1 Hotel.<br><br>Pizzas Per Second = 3,000</p></div>
+
+	<!--Pizza Factories-->
+	<button id="mybox24" type="button" onClick="buyMarsEcosystem(); pizzaPerSecondMars()"><span class="text">Build a Pizza Ecosystem! </span><span id="marsEcosystem" class="pullright">0</span><br>$<span id="marsEcosystemCost"> 1,000,000 </span> + <span id="marsEcosystemCostTrainedMartian"> 250 </span> + <span id="marsEcosystemCostTaskmaster"> 50 </span> + <span id="marsEcosystemCostOverseer"> 10 </span> + <span id="marsEcosystemCostEcosystem"> 1 </span></button> 
+	<div id="tooltip24"><p>Grow your very own self-sustaining pizza ecosystem. Did that tree just move... <br><br> Cost = $<span id="marsEcosystemCostTT">1,000,000</span>, 250 Trained Martians, 50 Taskmasters, 10 Overseers, 1 Ecosystem. <br><br>Pizzas Per Second = 10,000</p></div>
+	
+	<!--Pizza Converters-->
+	<button id="mybox25" type="button" onClick="buyMarsHarvester(); pizzaPerSecondMars()"><span class="text">Build a Pizza Harvester! </span><span id="marsHarvester" class="pullright">0</span><br>$<span id="marsHarvesterCost"> 25,000,000 </span> + <span id="marsHarvesterCostTrainedMartian"> 400 </span> + <span id="marsHarvesterCostTaskmaster"> 150 </span> + <span id="marsHarvesterCostOverseer"> 25 </span> + <span id="marsHarvesterCostTechnician"> 10 </span> + <span id="marsHarvesterCostMartianMetal"> 20 </span> + <span id="marsHarvesterCostHarvester"> 1 </span></button>
+	<div id="tooltip25"><p>It's just a fancy name for a giant hoover that turns crap into pizza.<br><br> Cost = $<span id="marsHarvesterCostTT">25,000,000</span>, 400 Trained Martians, 150 Taskmasters, 25 Overseers, 10 Technicians, 20 Martian Metal, 1 Harvester. <br><br>Pizzas Per Second = 200,000</p></div>
+
+	<!--Pizza Weather Machines-->
+	<button id="mybox26" type="button" onClick="buyMarsExcavator(); pizzaPerSecondMars()"><span class="text">Build a Pizza Volcano Excavator! </span><span id="marsExcavator" class="pullright">0</span><br>$<span id="marsExcavatorCost"> 300,000,000 </span> + <span id="marsExcavatorCostTrainedMartian"> 600 </span> + <span id="marsExcavatorCostTaskmaster"> 400 </span> + <span id="marsExcavatorCostOverseer"> 80 </span> + <span id="marsExcavatorCostTechnician"> 25 </span> + <span id="marsExcavatorCostMartianMetal"> 50 </span> + <span id="marsExcavatorCostExcavator"> 1 </span></button>
+	<div id="tooltip26"><p>Face-meltingly hot magma makes the best pizza base! We are not held liable for severe mouth burns... Or anus burns.<br><br> Cost = $<span id="marsExcavatorCostTT">300,000,000</span>, 600 Trained Martians, 400 Taskmasters, 80 Overseers, 25 Technicians, 50 Martian Metal, 1 Excavator.  <br><br>Pizzas Per Second = 1,500,000</p></div>
+
+	<!--Pizza Super Drills-->
+	<button id="mybox27" type="button" onClick="buyMarsExtractor(); pizzaPerSecondMars()"><span class="text">Build a Pizza Asteroid Extractor! </span><span id="marsExtractor" class="pullright">0</span><br>$<span id="marsExtractorCost"> 4,000,000,000 </span><span id="marsExtractorCostTrainedMartian"> 850 </span> + <span id="marsExtractorCostTaskmaster"> 700 </span> + <span id="marsExtractorCostOverseer"> 250 </span> + <span id="marsExtractorCostTechnician"> 100 </span> + <span id="marsExtractorCostMartianMetal"> 150 </span> + <span id="marsExtractorCostExtractor"> 1 </span></button>
+	<div id="tooltip27"><p>Why are you looking at me like that? Everyone knows asteroids go well with pizza.<br><br> Cost = $<span id="marsExtractorCostTT">4,000,000,000</span>, 850 Trained Martians, 700 Taskmasters, 250 Overseers, 100 Technicians, 150 Martian Metal, 1 Extractor. <br><br>Pizzas Per Second = 10,000,000</p></div>
+
+	<!--Pizza Moon Bases-->
+	<button id="mybox28" type="button" onClick="buyMarsAtmosphere(); pizzaPerSecondMars()"><span class="text">Build a Pizza Atmosphere Machine! </span><span id="marsAtmosphere" class="pullright">0</span><br>$<span id="marsAtmosphereCost"> 100,000,000,000 </span> + <span id="marsAtmosphereCostTrainedMartian"> 1k </span> + <span id="marsAtmosphereCostTaskmaster"> 1k </span> + <span id="marsAtmosphereCostOverseer"> 1k </span> + <span id="marsAtmosphereCostTechnician"> 500 </span> + <span id="marsAtmosphereCostMartianMetal"> 1k </span> + <span id="marsAtmosphereCostAtmosphere">1</span></button>
+	<div id="tooltip28"><p>Convert the planet itself into a habitable pizza. It even has a stuffed crust. Hah.<br><br> Cost = $<span id="marsAtmosphereCostTT">100,000,000,000</span>, 1,000 Trained Martians, 1,000 Taskmasters, 1,000 Overseers, 500 Technicians, 1,000 Martian Metal, 1 Atmosphere Machine.<br><br>Pizzas Per Second = 185,000,000</p></div>
+
+	<span id="spacetravel">
+
+	<h1 class="textmiddle"> Space Travel </h1>
+
+	<button id="mybox32" type="buttonspace" onClick="buyBackToEarth()"><span class="textspace">Travel back to Earth!</span></button>
+	<div id="tooltip32"><p>You think you can waste precious pizza on fuel when we have flammable martians?<br><br> Cost = 1,000 Trained Martians</p></div>
+
+	</span>
+
+	<div id="sloppy1"></div> <!-- Fixes height issue / scroll issue -->
+
+</div> <!-- End of Right -->
+
+<script type="text/javascript" src="mars.js"></script> <!-- Links to the JS file -->
+
+
+<!-- Google Analytics -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-49722075-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script type="text/javascript" src="jquery.js" charset="utf8"></script> <!-- Links to the JQ file -->
+<script type="text/javascript" src="jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( "#dialog" ).dialog();
+  });
+  </script>
+
+<!-- End of Google Analytics -->
+
+</body>
+
+</html>
